@@ -1,5 +1,5 @@
 class Solution {
-    public String solution(String my_string, int s, int e) {
-        return new StringBuilder(my_string.substring(0, s)).append(new StringBuilder(my_string.substring(s, e + 1)).reverse()).append(my_string.substring(e + 1)).toString();
+    public String solution(String myString, int s, int e) {
+        return myString.substring(0, s) + new StringBuilder(myString.substring(s, e + 1)).reverse().toString() + myString.substring(e + 1);
     }
 }
