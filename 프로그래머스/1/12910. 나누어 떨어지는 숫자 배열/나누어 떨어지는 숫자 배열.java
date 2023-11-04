@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 class Solution {
-    public ArrayList<Integer> solution(int[] arr, int divisor) {
+    public int[] solution(int[] arr, int divisor) {
         ArrayList<Integer> ar = new ArrayList<>();
         
         for (int i = 0; i < arr.length; i++) {
@@ -16,6 +16,6 @@ class Solution {
 		}
         
         Collections.sort(ar);
-        return ar;
+        return ar.stream().mapToInt(i -> i).toArray();
     }
 }
