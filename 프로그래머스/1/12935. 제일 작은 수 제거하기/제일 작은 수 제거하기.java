@@ -12,14 +12,7 @@ class Solution {
             }
         }
 
-        int count = 0;
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i] != min) {
-                count++;
-            }
-        }
-
-        int[] answer = new int[count];
+        int[] answer = new int[arr.length - 1];
         int idx = 0;
         for (int i = 0; i < arr.length; i++) {
             if (arr[i] != min) {
