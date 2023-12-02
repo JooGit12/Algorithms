@@ -6,7 +6,7 @@ class Solution {
 			answer *= i;
 			if (answer == n) {
 				answer = i;
-                break;
+              			break;
 			}else if (answer > n) {
 				answer = i - 1;
 				break;
