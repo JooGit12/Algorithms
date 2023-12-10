@@ -1,24 +1,17 @@
-import java.util.HashMap;
-import java.util.Map;
-
 class Solution {
     public int solution(String[] strArr) {
+        int answer = 0;
 
-        Map<Integer, Integer> frequencyMap = new HashMap<>();
-        
-        for (String str : strArr) {
-			int length = str.length();
-			frequencyMap.put(length, frequencyMap.getOrDefault(length, 0) + 1);
-		}
-        
-        int maxFrequency = 0;
-        
-        for (int currentFrecuency : frequencyMap.values()) {
-			if (currentFrecuency > maxFrequency) {
-				maxFrequency = currentFrecuency;
-			}
-		}
-        
-        return maxFrequency;
+        int[] lengArr = new int[31];
+
+        for(int i=0; i<strArr.length; i++) {
+            lengArr[strArr[i].length()]++;
+        }
+
+        for(int i=0; i<=30; i++) {
+            answer = Math.max(answer, lengArr[i]);
+        }
+
+        return answer;
     }
 }
