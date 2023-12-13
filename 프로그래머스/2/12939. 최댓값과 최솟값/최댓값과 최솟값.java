@@ -2,7 +2,6 @@ import java.util.Arrays;
 
 class Solution {
     public String solution(String s) {
-        String answer = "";
         String[] sArr = s.split(" ");
         int[] iArr = new int[sArr.length];
         
