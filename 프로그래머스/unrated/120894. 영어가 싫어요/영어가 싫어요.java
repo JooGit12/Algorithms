@@ -1,16 +1,18 @@
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashMap;
+import java.util.Map;
+
 class Solution {
     public long solution(String numbers) {
-        String strNum = numbers.replaceAll("zero", "0")
-                               .replaceAll("one", "1")
-                               .replaceAll("two", "2")
-                               .replaceAll("three", "3")
-                               .replaceAll("four", "4")
-                               .replaceAll("five", "5")
-                               .replaceAll("six", "6")
-                               .replaceAll("seven", "7")
-                               .replaceAll("eight", "8")
-                               .replaceAll("nine", "9");
+        Map<String, String> map = new HashMap<>();
+        map.put("zero" , "0"); map.put("one"  , "1"); map.put("two"  , "2"); map.put("three", "3"); 
+        map.put("four" , "4"); map.put("five" , "5"); map.put("six"  , "6"); map.put("seven", "7"); 
+        map.put("eight", "8"); map.put("nine" , "9");
 
-        return Long.parseLong(strNum);
+        for(String x : map.keySet()) 
+            numbers = numbers.replace(x, map.get(x));
+
+        return Long.parseLong(numbers);
     }
 }
