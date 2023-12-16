@@ -11,6 +11,6 @@ class Solution {
 			}
 		}
         
-        return intArr.stream().mapToInt(Integer::intValue).toArray();
+        return intArr.stream().mapToInt(x -> x).toArray();
     }
 }
