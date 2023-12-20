@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Arrays;
 
 class Solution {
     public int[] solution(int n) {
@@ -9,9 +8,6 @@ class Solution {
 			if (n % i == 0) intArr.add(i);
 		}
         
-        int [] answer = intArr.stream().mapToInt(Integer::intValue).toArray();
-        Arrays.sort(answer);
-        
-        return answer;
+        return intArr.stream().mapToInt(Integer::intValue).toArray();
     }
 }
