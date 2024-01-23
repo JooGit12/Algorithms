@@ -1,6 +1,14 @@
 class Solution {
     public int solution(int n) {
-        StringBuilder reversedSB = new StringBuilder(Integer.toString(n, 3)).reverse();
-        return Integer.parseInt(reversedSB.toString(), 3);
+        String a = "";
+
+        while(n > 0){
+            a = (n % 3) + a;
+            n /= 3;
+        }
+        a = new StringBuilder(a).reverse().toString();
+
+
+        return Integer.parseInt(a,3);
     }
 }
