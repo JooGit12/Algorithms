@@ -1,30 +1,15 @@
 class Solution {
-	public int[] solution(String s) {
-		int countZero = 0;
-		int countNum = 0;
-
-		while (!s.equals("1")) {
-			countNum++;
-			int[] result = countZeroAndOne(s);
-			countZero += result[0];
-			s = Integer.toBinaryString(result[1]);
-		}
-
-		return new int[] { countNum, countZero };
-	}
-
-	private int[] countZeroAndOne(String s) {
-		int countZero = 0;
-		int countOne = 0;
-
-		for (int i = 0; i < s.length(); i++) {
-			if (s.charAt(i) == '0') {
-				countZero++;
-			} else {
-				countOne++;
-			}
-		}
-
-		return new int[] { countZero, countOne };
-	}
+    public int[] solution(String s) {
+        int[] answer = new int[2];
+        int temp;
+        while( !s.equals("1") ) {
+            answer[1] += s.length();
+            s = s.replaceAll("0", "");
+            temp = s.length();
+            s = Integer.toBinaryString(temp);
+            answer[0]++;
+            answer[1] -= temp;
+        }
+        return answer;  
+    }
 }
