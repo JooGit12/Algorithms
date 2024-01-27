@@ -1,6 +1,5 @@
 class Solution {
     public int solution(String A, String B) {
-        String tempB = B.repeat(2);
-        return tempB.indexOf(A);
+        return B.repeat(2).indexOf(A);
     }
 }
