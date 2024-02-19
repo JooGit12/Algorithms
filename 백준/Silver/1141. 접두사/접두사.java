@@ -4,31 +4,33 @@ import java.io.InputStreamReader;
 import java.util.Arrays;
 
 public class Main {
-	public static void main(String[] args) throws IOException {
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		
-		int n = Integer.parseInt(br.readLine());
-		
-		String[] prefixXArr = new String[n];
-		
-		for (int i = 0; i < prefixXArr.length; i++) {
-			String x = br.readLine();
-			prefixXArr[i]= x;
-		}
-		
-		Arrays.sort(prefixXArr);
-		
-		int count = 0;
-		
-		for (int i = 0; i < n; i++) {
-			for (int j = i + 1; j < n; j++) {
-				if (prefixXArr[j].startsWith(prefixXArr[i])) {
-					count++;
-					break;
-				}
-			}
-		}
-		
-		System.out.println(prefixXArr.length - count);
-	}
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        String[] words = readWords(br);
+        int prefixXSetSize = calculatePrefixXSetSize(words);
+        System.out.println(prefixXSetSize);
+    }
+
+    private static String[] readWords(BufferedReader br) throws IOException {
+        int n = Integer.parseInt(br.readLine());
+        String[] words = new String[n];
+        for (int i = 0; i < n; i++) {
+            words[i] = br.readLine();
+        }
+        return words;
+    }
+
+    private static int calculatePrefixXSetSize(String[] words) {
+        Arrays.sort(words);
+        int count = 0;
+        for (int i = 0; i < words.length; i++) {
+            for (int j = i + 1; j < words.length; j++) {
+                if (words[j].startsWith(words[i])) {
+                    count++;
+                    break;
+                }
+            }
+        }
+        return words.length - count;
+    }
 }
