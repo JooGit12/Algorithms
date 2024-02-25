@@ -1,9 +1,17 @@
 class Solution {
     public int[] solution(int brown, int yellow) {
-        double d = Math.sqrt((brown + 4) / 2.0 * (brown + 4) / 2.0 - 4 * (brown + yellow));
-        int weight = (int)(((brown + 4) / 2.0 + d) / 2);
-        int height = (int)(((brown + 4) / 2.0 - d) / 2);
+        int carpetArea = brown + yellow;        
+        int x = 3;
+        int y = 3;
         
-        return new int[] {weight, height};
+        for (int i = 3; i <= carpetArea / 2; i++) {
+			if (carpetArea % i == 0) {
+				x = carpetArea / i;
+				y = i;
+				if (2 * (x + y) - 4 == brown) break;
+			}
+		}
+
+        return new int[] {x, y};
     }
 }
