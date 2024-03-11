@@ -11,11 +11,10 @@ public class Main {
 
 			String[] inputs = br.readLine().split(" ");
 			
-			int a = Integer.parseInt(inputs[0]);
-			int b = Integer.parseInt(inputs[1]);
+			long a = Integer.parseInt(inputs[0]);
+			long b = Integer.parseInt(inputs[1]);
 			
-			bw.write(Integer.toString(a*a - b*b));
-			
+			bw.write(Long.toString(a*a - b*b));
 			bw.flush();
 		} catch (IOException e) {
 			e.printStackTrace();
