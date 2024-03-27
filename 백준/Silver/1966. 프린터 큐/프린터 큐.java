@@ -33,10 +33,6 @@ public class Main {
 				for (int j = 0; j < q.size(); j++) {
 					if (front[1] < q.get(j)[1]) {
 						q.offer(front);
-						for (int k = 0; k < j; k++) {
-							q.offer(q.poll());
-						}
-						
 						isMax = false;
 						break;
 					}
