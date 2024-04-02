@@ -7,12 +7,8 @@ public class Main {
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 		
 		long S = Long.parseLong(reader.readLine());
-		long N = 1;
+		long N = (long)(Math.sqrt(1 + 8*S) - 1) / 2;
 		
-		while ((N * (N + 1) / 2) <= S) {
-			N++;
-		}
-		
-		System.out.println(N - 1);
+		System.out.println(N);
 	}
 }
