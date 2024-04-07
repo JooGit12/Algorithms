@@ -1,13 +1,12 @@
 public class Solution {
 	public int solution(int n) {
-		return getRepeats(n);
-	}
-	
-	public int getRepeats(int n) {
-		if (n == 1) {
-			return 1;
+		String binaryN = Integer.toBinaryString(n);
+		int answer = 0;
+		
+		for (char ch : binaryN.toCharArray()) {
+			if (ch == '1') answer++;
 		}
 		
-		return (n % 2 == 0) ? getRepeats(n / 2) : getRepeats((n - 1) / 2) + 1;
+		return answer;
 	}
 }
