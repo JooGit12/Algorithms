@@ -7,51 +7,34 @@ public class Main {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         
         String[] input = reader.readLine().split(" ");
-        int A = Integer.parseInt(input[0]);
-        int B = Integer.parseInt(input[1]);
+        String A = input[0];
+        String B = input[1];
         
-        int minSum = getMin(A) + getMin(B);
-        int maxSum = getMax(A) + getMax(B);
+        int[] aArr = getMaxMin(A);
+        int[] bArr = getMaxMin(B);
         
-        System.out.println(minSum + " " + maxSum);
+        System.out.println((aArr[1] + bArr[1]) + " " + (aArr[0] + bArr[0]));
         reader.close();
     }
     
-    private static int getMin(int num) {
-        int minNum = 0;
-        int factor = 1;
+    private static int[] getMaxMin(String num) {
         
-        while (num > 0) {
-            int digit = num % 10;
-            num /= 10;
-            
-            if (digit == 6) {
-                digit = 5;
+        StringBuilder max = new StringBuilder();
+        StringBuilder min = new StringBuilder();
+        
+        for (int i = 0; i < num.length(); i++) {
+            if (num.charAt(i) == '5') {
+                max.append('6');
+                min.append('5');
+            } else if (num.charAt(i) == '6') {
+                max.append('6');
+                min.append('5');
+            } else {
+                max.append(num.charAt(i));
+                min.append(num.charAt(i));
             }
-            
-            minNum += digit * factor;
-            factor *= 10;
         }
         
-        return minNum;
-    }
-    
-    private static int getMax(int num) {
-        int maxNum = 0;
-        int factor = 1;
-        
-        while (num > 0) {
-            int digit = num % 10;
-            num /= 10;
-            
-            if (digit == 5) {
-                digit = 6;
-            }
-            
-            maxNum += digit * factor;
-            factor *= 10;
-        }
-        
-        return maxNum;
+        return new int[] {Integer.parseInt(max.toString()), Integer.parseInt(min.toString())};
     }
 }
