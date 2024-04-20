@@ -12,17 +12,17 @@ public class Main {
         
         int N = Integer.parseInt(reader.readLine());
         
-        LinkedList<Integer> q = new LinkedList<>();
+        LinkedList<String> q = new LinkedList<>();
         
         for (int i = 0; i < N; i++) {
             String[] input = reader.readLine().split(" ");
             switch (input[0]) {
                 case "push":
-                    q.offer(Integer.parseInt(input[1]));
+                    q.offer(input[1]);
                     break;
                 case "pop":
-                    Integer element = q.poll();
-                    writer.append(element != null ? element.toString() : "-1").append("\n");
+                    String element = q.poll();
+                    writer.append(element != null ? element : "-1").append("\n");
                     break;
                 case "size":
                     writer.append(Integer.toString(q.size())).append("\n");
@@ -31,10 +31,10 @@ public class Main {
                     writer.append(q.isEmpty() ? "1" : "0").append("\n");
                     break;
                 case "front":
-                    writer.append(q.isEmpty() ? "-1" : q.peek().toString()).append("\n");
+                    writer.append(q.isEmpty() ? "-1" : q.peek()).append("\n");
                     break;
                 case "back":
-                    writer.append(q.isEmpty() ? "-1" : q.peekLast().toString()).append("\n");
+                    writer.append(q.isEmpty() ? "-1" : q.peekLast()).append("\n");
                     break;
             }
         }
