@@ -7,16 +7,21 @@ public class Main {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         
         int N = Integer.parseInt(reader.readLine());
+        int[] fiboArr = new int[N + 1];
         
-        System.out.println(fibo(N));
+        System.out.println(fibo(N, fiboArr));
         
         reader.close();
     }
     
-    private static int fibo(int n) {
-        if (n == 0) return 0;
-        if (n < 3) return 1;
-        return fibo(n - 1) + fibo(n - 2);
+    private static int fibo(int n, int[] fiboArr) {
+                
+        for (int i = 0; i < fiboArr.length; i++) {
+            if (i == 0) fiboArr[0] = 0;
+            else if (i == 1) fiboArr[1] = 1;
+            else fiboArr[i] = fiboArr[i - 1] + fiboArr[i - 2];
+        }
+        
+        return fiboArr[n];
     }
 }
-
