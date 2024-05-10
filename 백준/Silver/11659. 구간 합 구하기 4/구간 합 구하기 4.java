@@ -1,11 +1,14 @@
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.util.StringTokenizer;
 
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(System.out));
         StringTokenizer nm = new StringTokenizer(reader.readLine());
         StringTokenizer numsToken = new StringTokenizer(reader.readLine());
         
@@ -21,9 +24,11 @@ public class Main {
             StringTokenizer section = new StringTokenizer(reader.readLine());
             int start = Integer.parseInt(section.nextToken()) - 1;
             int end = Integer.parseInt(section.nextToken());
-            System.out.println(nums[end] - nums[start]);
+            writer.append(Integer.toString(nums[end] - nums[start])).append("\n");
         }
         
+        writer.flush();
+        writer.close();
         reader.close();
     }
 }
