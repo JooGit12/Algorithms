@@ -5,32 +5,47 @@ import java.math.BigInteger;
 import java.util.StringTokenizer;
 
 public class Main {
-    public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int tc = Integer.parseInt(br.readLine());
-        StringBuilder sb = new StringBuilder();
-        while (tc-->0) {
-            StringTokenizer st = new StringTokenizer(br.readLine());
-            int c = Integer.parseInt(st.nextToken());
-            int r = Integer.parseInt(st.nextToken());
-            BigInteger[] arr = new BigInteger[c];
-            for (int i = 0; i < c; i++) arr[i] = BigInteger.ONE;
-            while (r-->0) {
-                st = new StringTokenizer(br.readLine());
-                for (int i = 0; i < c; i++) {
-                    arr[i] = arr[i].multiply(new BigInteger(st.nextToken()));
+    public static void main(String[] args) throws IOException{
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in)); 
+        
+        int t = Integer.parseInt(reader.readLine());
+        
+        StringBuilder builder = new StringBuilder();
+        while(t --> 0) {
+            StringTokenizer tokenizer = new StringTokenizer(reader.readLine());
+            int m = Integer.parseInt(tokenizer.nextToken()), n = Integer.parseInt(tokenizer.nextToken());
+            
+            int[][] arr = new int[n][m];
+            for(int i = 0; i < n; i++) {
+                tokenizer = new StringTokenizer(reader.readLine());
+                for(int j = 0; j < m; j++) {
+                    arr[i][j] = Integer.parseInt(tokenizer.nextToken());
                 }
             }
-            BigInteger max = arr[0];
-            int maxIdx = 0;
-            for (int i = 1; i < c; i++) {
-                if (max.compareTo(arr[i])<=0) {
-                    max = arr[i];
-                    maxIdx = i;
+            
+            BigInteger max = BigInteger.ZERO;
+            int answer = 1;
+            for(int i = 0; i < m; i++) {
+                BigInteger sum = BigInteger.ONE;
+                for(int j = 0; j < n; j++) {
+                    sum = sum.multiply(BigInteger.valueOf(arr[j][i]));
+                }
+                
+                if(i == 0) {
+                    max = sum;
+                    continue;
+                }
+                
+                if(sum.compareTo(max) == 1) {
+                    max = sum;
+                    answer = i + 1;
+                }
+                else if(sum.compareTo(max) == 0) {
+                    answer = i + 1;
                 }
             }
-            sb.append(maxIdx+1).append('\n');
+            builder.append(answer).append("\n");
         }
-        System.out.print(sb);
+        System.out.print(builder);
     }
 }
